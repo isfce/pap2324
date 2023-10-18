@@ -21,16 +21,16 @@ public class Evaluation {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		boolean erreur;
+		boolean ok;
 		int note;
 		// Input
 		do {
 			System.out.print("Entrez une note: ");
 			note = scan.nextInt();
-			erreur = !(note >= 0 && note <= 100);
-			if (erreur)
+			ok = (note >= 0 && note <= 100);
+			if (!ok)
 				System.err.println("ERREUR");
-		} while (erreur);
+		} while (!ok);
 		// traitement
 		String decision = calculDecision(note);
 		// Output
