@@ -1,12 +1,12 @@
 import sys
 
 def calculDecision(note : float)-> str:
-   '''
+    '''
     Détermine la décision sur base de la note
     '''
     assert 0<=note<=100 ; "La note doit être entre 0 et 100"
     if note < 30:
-        res = "Raté"
+        res = "Refus"
     elif note<50:
         res = "Ajourné"
     else:

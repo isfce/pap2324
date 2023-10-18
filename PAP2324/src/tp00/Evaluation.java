@@ -19,6 +19,20 @@ public class Evaluation {
 		return "Réussite";
 	}
 
+	/**
+	 * Calcule la somme de 1 à n
+	 * 
+	 * @param n >=1
+	 * @return la somme
+	 */
+	public static long calculSomme1(int n) {
+		assert n >= 1 : "n doit être >=1";
+		long s = 1;
+		for (int i = 2; i <= n; i++)
+			s = s + i;
+		return s;
+	}
+
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		boolean ok;
