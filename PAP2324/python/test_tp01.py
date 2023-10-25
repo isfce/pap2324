@@ -12,6 +12,21 @@ class TestTp00(unittest.TestCase):
         self.assertEqual("Réussite",tp01.calculDecision(100))        
         self.assertRaises(AssertionError,tp01.calculDecision,-1)
         self.assertRaises(AssertionError,tp01.calculDecision,101)
+    
+    def test_calculSomme1(self):
+        self.assertEqual(1,tp01.calculSomme1(1))
+        self.assertEqual(10,tp01.calculSomme1(4))
+        self.assertRaises(AssertionError,tp01.calculSomme1,-1)
+        self.assertRaises(AssertionError,tp01.calculSomme1,2.7)
+        
+    def test_calculSomme2(self):
+        self.assertEqual(1,tp01.calculSomme2(1))
+        self.assertEqual(10,tp01.calculSomme2(4))
+        self.assertRaises(AssertionError,tp01.calculSomme2,-1)
+        self.assertRaises(AssertionError,tp01.calculSomme2,2.7)
+        
+        
+        
 
 if __name__ == "__main__":
     unittest.main()

@@ -12,6 +12,20 @@ def calculDecision(note : float)-> str:
     else:
         res = "Réussite"
     return res
+
+def calculSomme1(n : int)->int:
+    'Calcule la somme de 1 à n via boucle pour'
+    assert type(n)==int and n>=1 ; 'n doit être un entier >=1'
+    s = 1
+    for i in range(2,n+1):
+        s = s + i
+    return s
+
+def calculSomme2(n : int)->int:
+    'Calcule la somme de 1 à n via formule'
+    assert type(n)==int and n>=1 ; 'n doit être un entier >=1'
+    return n * (n+1) / 2
+
 if __name__=="__main__":
     #Lecteur de la donnée
     n = int(input("Entrez un nombre entre 0 et 100: "))

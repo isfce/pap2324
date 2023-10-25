@@ -20,7 +20,7 @@ public class Evaluation {
 	}
 
 	/**
-	 * Calcule la somme de 1 à n
+	 * Calcule la somme de 1 à n via une boucle pour
 	 * 
 	 * @param n >=1
 	 * @return la somme
@@ -31,6 +31,35 @@ public class Evaluation {
 		for (int i = 2; i <= n; i++)
 			s = s + i;
 		return s;
+	}
+
+	/**
+	 * Calcule la somme de 1 à n Via une formule
+	 * 
+	 * @param n >=1
+	 * @return la somme
+	 */
+	public static long calculSomme2(int n) {
+		assert n >= 1 : "n doit être >=1";
+		return n * (long) (n + 1) / 2;
+	}
+
+	/**
+	 * Calcule la somme de 1 à n Via une formule
+	 * valable pour les plus grands nombres
+	 * @param n >=1
+	 * @return la somme
+	 */
+	public static long calculSomme3(int n) {
+		assert n >= 1 : "n doit être >=1";
+		long n1 = n, n2 = n;
+
+		if ((n & 1) == 0) {
+			n1 = n / 2;
+			n2 = n + 1;
+		} else
+			n2 = (n2 + 1) / 2;
+		return n1 * n2;
 	}
 
 	public static void main(String[] args) {
