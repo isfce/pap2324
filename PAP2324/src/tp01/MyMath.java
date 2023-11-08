@@ -18,7 +18,25 @@ public class MyMath {
 		return n % 2 == 0;
 	}
 
-	public static void main(String[] args) {
+	/**
+	 * Calcul le nombre de bits à 1 dans n
+	 * 
+	 * @param n
+	 * @return nombre de bits à 1
+	 */
+	public static int nbBitsV1(int n) {
+		int cpt = 0;
+		int masque = 1;
+		for (int i = 1; i <= 32; i++) {
+			if ((n & masque)==masque)// on a un bit à 1?
+				cpt++;
+			// ajuste mon masque d'une pos vers la gauche
+			masque = masque << 1;	
+		}
+		return cpt;
+	}
 
+	public static void main(String[] args) {
+		System.out.println(MyMath.nbBitsV1(-1));
 	}
 }
