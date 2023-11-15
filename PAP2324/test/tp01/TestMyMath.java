@@ -23,5 +23,14 @@ class TestMyMath {
 		assertEquals(1,MyMath.nbBitsV1(1));
 		assertEquals(32,MyMath.nbBitsV1(-1));
 	}
-
+	
+	@Test
+	void testnbBitsV2() {
+		assertEquals(0,MyMath.nbBitsV2(0));
+		assertEquals(1,MyMath.nbBitsV2(1));
+		assertEquals(3,MyMath.nbBitsV2(0b000011010));
+		assertEquals(32,MyMath.nbBitsV2(-1));
+	}
+	
+	
 }
