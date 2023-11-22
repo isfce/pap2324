@@ -45,7 +45,7 @@ public class MyMath {
 	public static int nbBitsV2(int n) {
 		int cpt = 0;
 		int masque = 1;
-		int masque2 = -1;//0xFFFFFFFF;
+		int masque2 = -1;// 0xFFFFFFFF;
 		while ((n & masque2) != 0) {
 			if ((n & masque) == masque)// on a un bit à 1?
 				cpt++;
@@ -54,6 +54,24 @@ public class MyMath {
 			masque2 = masque2 << 1;
 		}
 		return cpt;
+	}
+
+	/**
+	 * Recherche la position du dernier bit à 1
+	 * 
+	 * @param n entier 32 bits
+	 * @return positon 0..31 sinon -1
+	 */
+	public static int posBit1(int n) {
+		if (n == 0)
+			return -1;
+		int pos = 31;
+		int masque = 1 << 31;
+		while ((n & masque) == 0) {
+			masque = masque >>> 1;
+			pos--;
+		}
+		return pos;
 	}
 
 	public static void main(String[] args) {

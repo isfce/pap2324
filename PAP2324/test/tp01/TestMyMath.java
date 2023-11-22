@@ -32,5 +32,12 @@ class TestMyMath {
 		assertEquals(32,MyMath.nbBitsV2(-1));
 	}
 	
+	@Test
+	void testPosBit1() {
+		assertEquals(-1,MyMath.posBit1(0));
+		assertEquals(1,MyMath.posBit1(2));
+		assertEquals(31,MyMath.posBit1(-1));
+	}
+	
 	
 }
