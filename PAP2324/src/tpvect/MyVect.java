@@ -1,7 +1,11 @@
 package tpvect;
 
 public class MyVect {
-
+	/**
+	 * Affiche un vecteur [1,2]
+	 * 
+	 * @param v
+	 */
 	public static void afficheV(int[] v) {
 		System.out.print("[");
 		for (int i = 0; i < v.length - 1; i++)
@@ -35,6 +39,64 @@ public class MyVect {
 		for (int i = 0; i < v.length; i++)
 			s = s + v[i];
 		return s;
+	}
+
+	/**
+	 * Retourne l'élément maximum du vecteur
+	 * 
+	 * @param v vecteur d'entier. Taille>0
+	 * @return maximum
+	 */
+	public static int maxElemV(int[] v) {
+		assert v.length > 0 : "Le vecteur doit avoir au moins un élément";
+		int maxi = v[0];
+		for (int i = 1; i < v.length; i++)
+			if (v[i] > maxi)
+				maxi = v[i];
+		return maxi;
+	}
+
+	/**
+	 * Retourne la moyenne des éléments du vecteur
+	 * 
+	 * @param v vecteur d'entier. Taille>0
+	 * @return moyenne
+	 */
+	public static double avgElemV(int[] v) {
+		assert v.length > 0 : "Le vecteur doit avoir au moins un élément";
+		return (double) sommeV(v) / v.length;
+	}
+
+	/**
+	 * retourne le min max du vecteur
+	 * 
+	 * @param v
+	 * @return [min,max]
+	 */
+	public static int[] minMaxElemV(int[] v) {
+		assert v.length > 0 : "Le vecteur doit avoir au moins un élément";
+		// int[] res=new int[2];
+		// res[0]=v[0]; res[1]=v[0];
+		int[] res = { v[0], v[0] };// vecteur résultat [min,max]
+		for (int i = 1; i < v.length; i++)
+			if (v[i] < res[0])
+				res[0] = v[i];
+			else if (v[i] > res[1])
+				res[1] = v[i];
+		return res;
+	}
+
+	/**
+	 * Clonage d'un vecteur
+	 * 
+	 * @param v
+	 * @return
+	 */
+	public static int[] cloneV(int[] v) {
+		int[] clone = new int[v.length];
+		for (int i = 0; i < v.length; i++)
+			clone[i] = v[i];
+		return clone;
 	}
 
 	public static void main(String[] args) {
