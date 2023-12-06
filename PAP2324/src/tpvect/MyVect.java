@@ -99,6 +99,38 @@ public class MyVect {
 		return clone;
 	}
 
+	/**
+	 * 
+	 * @param v
+	 * @return
+	 */
+	public static boolean estTrieV1(int[] v) {
+		assert v.length > 0 : "Le vecteur doit avoir au moins un élément";
+		int i = 0;
+		boolean trie = true;
+		int limite = v.length - 1;
+		while (i < limite && trie) {
+			trie = v[i] <= v[i + 1];
+			i++;
+		}
+		return trie;
+	}
+
+	/**
+	 * 
+	 * @param v
+	 * @return
+	 */
+	public static boolean estTrieV2(int[] v) {
+		assert v.length > 0 : "Le vecteur doit avoir au moins un élément";
+		int i = 0;
+		int limite = v.length - 1;
+		while (i < limite && v[i] <= v[i + 1])
+			i++;
+
+		return i == limite;
+	}
+
 	public static void main(String[] args) {
 		int[] v0 = {};
 		MyVect.afficheV(v0);
