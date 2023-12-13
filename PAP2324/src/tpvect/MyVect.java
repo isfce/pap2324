@@ -131,6 +131,13 @@ public class MyVect {
 		return i == limite;
 	}
 
+	public static boolean existeMot(char[] texte, char[] mot) {
+		assert mot.length>0:"Le mot ne peut pas être vide";
+		boolean trouve = false;
+		
+		return trouve;
+	}
+
 	public static void main(String[] args) {
 		int[] v0 = {};
 		MyVect.afficheV(v0);

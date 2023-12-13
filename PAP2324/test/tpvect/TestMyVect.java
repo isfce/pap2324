@@ -85,4 +85,21 @@ public class TestMyVect {
 		assertFalse(MyVect.estTrieV2(v3));
 		assertThrows(AssertionError.class, () -> MyVect.estTrieV2(v0));
 	}
+	
+	@Test
+	void testExisteMot() {
+		char[] texte= {'L','T','T','T','E','E','L'};
+		char[] mot0= {};//assert
+		char[] mot1= {'E','L','L'};//non
+		char[] mot2= {'L','T','T'};//oui
+		char[] mot3= {'T','T','E'};//oui
+		char[] mot4= {'Z'};//non
+		assertFalse(MyVect.existeMot(texte, mot1));
+		assertFalse(MyVect.existeMot(texte, mot4));
+		assertTrue(MyVect.existeMot(texte, mot2));
+		assertTrue(MyVect.existeMot(texte, mot3));
+		assertTrue(MyVect.existeMot(texte, texte));
+		assertThrows(AssertionError.class, () -> MyVect.existeMot(texte,mot0));
+	}
+	
 }
