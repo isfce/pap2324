@@ -131,10 +131,34 @@ public class MyVect {
 		return i == limite;
 	}
 
+	/**
+	 * Indique si un mot existe dans le texte
+	 * 
+	 * @param texte
+	 * @param mot   doit contenir au moins un caractère
+	 * @return boolean trouvé
+	 */
 	public static boolean existeMot(char[] texte, char[] mot) {
-		assert mot.length>0:"Le mot ne peut pas être vide";
+		assert mot.length > 0 : "Le mot ne peut pas être vide";
+		int i = 0;
 		boolean trouve = false;
-		
+		int limite = texte.length - mot.length;
+		while (limite >= i && !trouve) {
+			// recherche la première lettre du mot dans texte
+			while (limite >= i && texte[i] != mot[0])
+				i++;
+			if (limite >= i) {
+				int k = 1;
+				int j = i + 1;
+				// vérifie les autres lettres du mot
+				while (k < mot.length && texte[j] == mot[k]) {
+					j++;
+					k++;
+				}
+				trouve = k == mot.length;
+				i++;
+			}
+		}
 		return trouve;
 	}
 

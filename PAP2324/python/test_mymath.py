@@ -16,9 +16,5 @@ class TestMyMath(unittest.TestCase):
         self.assertEqual(1,mymath.nbBitsV1(1))
         self.assertEqual(6,mymath.nbBitsV1(207))
         
-        
-                         
-    
-    
 if __name__ == "__main__":
     unittest.main()
