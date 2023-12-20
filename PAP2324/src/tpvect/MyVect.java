@@ -1,5 +1,7 @@
 package tpvect;
 
+import java.util.Arrays;
+
 public class MyVect {
 	/**
 	 * Affiche un vecteur [1,2]
@@ -162,11 +164,57 @@ public class MyVect {
 		return trouve;
 	}
 
+	/**
+	 * Tri par insertion
+	 * 
+	 * @param v
+	 */
+	public static void triInsertion(int[] v) {
+		for (int i = 1; i < v.length; i++) {
+			int tmp = v[i];
+			int j = i - 1;
+			// cherche la position d'insertion
+			while (j >= 0 && v[j] > tmp) {
+				v[j + 1] = v[j]; // décale les éléments plus grands
+				j--;
+			}
+			v[j + 1] = tmp;// insère tmp à sa bonne place
+		}
+	}
+
+	/**
+	 * Tri Bulles
+	 * 
+	 * @param v
+	 */
+	public static void triBulles(int[] v) {
+		int posInv = v.length - 1;
+		boolean inversion;
+		do {
+			int fin = posInv-1;
+			inversion = false;
+			for (int i = 0; i <= fin; i++)
+				if (v[i] > v[i + 1]) {
+					inversion = true;
+					posInv = i;
+					// swap
+					int tmp = v[i];
+					v[i] = v[i + 1];
+					v[i + 1] = tmp;
+				}
+		} while (inversion);
+	}
+
 	public static void main(String[] args) {
-		int[] v0 = {};
-		MyVect.afficheV(v0);
-		int[] v1 = { 0, 1, 1, 2, 3, 5, 8, 13, 21 };
-		MyVect.afficheV(v1);
-		System.out.println(MyVect.sommeV(v1));
+		int[] v = new int[100];
+		for (int i = 0; i < v.length; i++)
+			v[i] = 100 - i;
+
+		long t0 = System.nanoTime();
+		//triInsertion(v);
+		//triBulles(v);
+		Arrays.sort(v);
+		long t1 = System.nanoTime();
+		System.out.println("Durée ms: " + (t1 - t0) / 1000000.0);
 	}
 }

@@ -74,6 +74,7 @@ public class TestMyVect {
 		assertFalse(MyVect.estTrieV1(v3));
 		assertThrows(AssertionError.class, () -> MyVect.estTrieV1(v0));
 	}
+
 	@Test
 	void testEstTriev2() {
 		int[] v0 = {};
@@ -85,21 +86,52 @@ public class TestMyVect {
 		assertFalse(MyVect.estTrieV2(v3));
 		assertThrows(AssertionError.class, () -> MyVect.estTrieV2(v0));
 	}
-	
+
 	@Test
 	void testExisteMot() {
-		char[] texte= {'L','T','T','T','E','E','L'};
-		char[] mot0= {};//assert
-		char[] mot1= {'E','L','L'};//non
-		char[] mot2= {'L','T','T'};//oui
-		char[] mot3= {'T','T','E'};//oui
-		char[] mot4= {'Z'};//non
+		char[] texte = { 'L', 'T', 'T', 'T', 'E', 'E', 'L' };
+		char[] mot0 = {};// assert
+		char[] mot1 = { 'E', 'L', 'L' };// non
+		char[] mot2 = { 'L', 'T', 'T' };// oui
+		char[] mot3 = { 'T', 'T', 'E' };// oui
+		char[] mot4 = { 'Z' };// non
 		assertFalse(MyVect.existeMot(texte, mot1));
 		assertFalse(MyVect.existeMot(texte, mot4));
 		assertTrue(MyVect.existeMot(texte, mot2));
 		assertTrue(MyVect.existeMot(texte, mot3));
 		assertTrue(MyVect.existeMot(texte, texte));
-		assertThrows(AssertionError.class, () -> MyVect.existeMot(texte,mot0));
+		assertThrows(AssertionError.class, () -> MyVect.existeMot(texte, mot0));
 	}
-	
+
+	@Test
+	void testTriInsertion() {
+		int[] v1 = { 5, 4, 3, 2, 1 };
+		int[] v2 = { 4, 2, 3, 5, 1 };
+		int[] v1t = { 1, 2, 3, 4, 5 };
+		MyVect.triInsertion(v1);
+		assertArrayEquals(v1t, v1);
+
+		MyVect.triInsertion(v2);
+		assertArrayEquals(v1t, v2);
+
+		MyVect.triInsertion(v1t);
+		assertTrue(MyVect.estTrieV1(v1t));
+
+	}
+
+	@Test
+	void testTriBulles() {
+		int[] v1 = { 5, 4, 3, 2, 1 };
+		int[] v1t = { 1, 2, 3, 4, 5 };
+		int[] v2 = { 4, 2 };
+		int[] v2t = { 2, 4 };
+		MyVect.triBulles(v1);
+		assertArrayEquals(v1t, v1);
+		
+		MyVect.triBulles(v2);
+		assertArrayEquals(v2t, v2);
+		// MyVect.triBulles(v1t);
+		// assertTrue(MyVect.estTrieV1(v1t));
+
+	}
 }
