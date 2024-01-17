@@ -123,11 +123,11 @@ public class TestMyVect {
 	void testTriBulles() {
 		int[] v1 = { 5, 4, 3, 2, 1 };
 		int[] v1t = { 1, 2, 3, 4, 5 };
-		int[] v2 = { 4, 2 };
-		int[] v2t = { 2, 4 };
+		int[] v2 = { 1, 3, 0, 2, 5 };
+		int[] v2t = { 0, 1, 2, 3, 5 };
 		MyVect.triBulles(v1);
 		assertArrayEquals(v1t, v1);
-		
+
 		MyVect.triBulles(v2);
 		assertArrayEquals(v2t, v2);
 		// MyVect.triBulles(v1t);

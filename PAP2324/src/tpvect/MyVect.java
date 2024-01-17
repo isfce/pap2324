@@ -188,15 +188,15 @@ public class MyVect {
 	 * @param v
 	 */
 	public static void triBulles(int[] v) {
-		int posInv = v.length - 1;
+		int posInv = v.length - 2;
 		boolean inversion;
 		do {
-			int fin = posInv-1;
+			int fin = posInv;
 			inversion = false;
 			for (int i = 0; i <= fin; i++)
 				if (v[i] > v[i + 1]) {
 					inversion = true;
-					posInv = i;
+					posInv = i-1;
 					// swap
 					int tmp = v[i];
 					v[i] = v[i + 1];

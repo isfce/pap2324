@@ -15,6 +15,4 @@ public enum Forme {
 	public Couleur getCouleur() {
 		return couleur;
 	}
-
-	
 }
