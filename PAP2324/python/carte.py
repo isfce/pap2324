@@ -14,10 +14,10 @@ class Motif(Enum):
     SEPT=6
     HUIT=7
     NEUF=8
-    DIX=10
-    VALET=11
-    DAME=12
-    ROI=13
+    DIX=9
+    VALET=10
+    DAME=11
+    ROI=12
     
 class Forme(Enum):
     PIQUE=0
