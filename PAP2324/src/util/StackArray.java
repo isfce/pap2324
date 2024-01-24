@@ -6,7 +6,7 @@ package util;
  * 
  * @param <T>
  */
-public class Stack<T> {
+public class StackArray<T> implements IStack<T> {
 	private final int tailleMax;
 	private int sommet;
 	private T[] v;
@@ -17,7 +17,7 @@ public class Stack<T> {
 	 * @param tailleMax : taille maximum du stack
 	 */
 	@SuppressWarnings("unchecked")
-	public Stack(int tailleMax) {
+	public StackArray(int tailleMax) {
 		this.tailleMax = tailleMax;
 		this.sommet = 0;
 		this.v = (T[]) new Object[tailleMax];
@@ -28,6 +28,7 @@ public class Stack<T> {
 	 * 
 	 * @param elem
 	 */
+	@Override
 	public void push(T elem) {
 		assert sommet < tailleMax : "Le stack est plein";
 		v[sommet] = elem;
@@ -39,6 +40,7 @@ public class Stack<T> {
 	 * 
 	 * @return l'élément au sommet du stack
 	 */
+	@Override
 	public T pop() {
 		assert sommet > 0 : "Le stack est vide";
 		sommet--;
@@ -52,6 +54,7 @@ public class Stack<T> {
 	 * 
 	 * @return l'élément au sommet du stack
 	 */
+	@Override
 	public T top() {
 		assert sommet > 0 : "Le stack est vide";
 		return v[sommet - 1];
@@ -62,6 +65,7 @@ public class Stack<T> {
 	 * 
 	 * @return
 	 */
+	@Override
 	public boolean empty() {
 		return sommet == 0;
 	}
