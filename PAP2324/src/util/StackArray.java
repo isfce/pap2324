@@ -77,8 +77,11 @@ public class StackArray<T> implements IStack<T> {
 
 	@Override
 	public void pushBottom(T elem) {
-		// TODO Auto-generated method stub
-		
+		assert sommet < tailleMax : "Le stack est plein";
+		for (int i = sommet; i > 0; i--)
+			v[i] = v[i - 1];
+		v[0] = elem;
+		sommet++;
 	}
 
 }
