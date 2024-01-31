@@ -75,4 +75,10 @@ public class StackArray<T> implements IStack<T> {
 		return "Stack [tailleMax=" + tailleMax + ", nbElem=" + sommet + "]";
 	}
 
+	@Override
+	public void pushBottom(T elem) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

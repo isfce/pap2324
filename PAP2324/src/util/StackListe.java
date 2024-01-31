@@ -1,11 +1,11 @@
 package util;
 
 public class StackListe<T> implements IStack<T> {
-	//Maillon pour la chaine
-	private class Maillon<K>{
+	// Maillon pour la chaine
+	private class Maillon<K> {
 		public final K info;
 		public Maillon<K> suiv;
-		
+
 		/**
 		 * @param info
 		 * @param suiv
@@ -40,6 +40,19 @@ public class StackListe<T> implements IStack<T> {
 	@Override
 	public boolean empty() {
 		return sommet == null;
+	}
+
+	@Override
+	public void pushBottom(T elem) {
+		Maillon<T> m = new Maillon<>(elem, null);
+		if (sommet == null)
+			sommet = m;
+		else {
+			Maillon<T> p = sommet;
+			while (p.suiv != null)
+				p = p.suiv;
+			p.suiv = m;
+		}
 	}
 
 }
