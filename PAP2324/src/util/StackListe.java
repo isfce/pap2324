@@ -2,7 +2,18 @@ package util;
 
 public class StackListe<T> implements IStack<T> {
 	//Maillon pour la chaine
-	private record Maillon<K>(K info, Maillon<K> suiv) {
+	private class Maillon<K>{
+		public final K info;
+		public Maillon<K> suiv;
+		
+		/**
+		 * @param info
+		 * @param suiv
+		 */
+		public Maillon(K info, Maillon<K> suiv) {
+			this.info = info;
+			this.suiv = suiv;
+		}
 	};
 
 	private Maillon<T> sommet = null;
