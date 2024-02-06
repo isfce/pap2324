@@ -196,7 +196,7 @@ public class MyVect {
 			for (int i = 0; i <= fin; i++)
 				if (v[i] > v[i + 1]) {
 					inversion = true;
-					posInv = i-1;
+					posInv = i - 1;
 					// swap
 					int tmp = v[i];
 					v[i] = v[i + 1];
@@ -205,14 +205,45 @@ public class MyVect {
 		} while (inversion);
 	}
 
+	// Tri quicksort V1
+	/**
+	 * Positionne le pivot dans la zone a,b du vecteur v
+	 * @param v
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public static int posPivot(int[] v, int a, int b) {
+		int tmp;
+		int i = a;
+		int j = b - 1;
+		int pivot = v[b];
+		while (i <= j) {
+			while (v[i] < pivot)
+				i++;
+			while (j >= 0 && v[j] >= pivot)
+				j--;
+			if (i < j) {// swap v[i]<->v[j]
+				tmp = v[i];
+				v[i] = v[j];
+				v[j] = tmp;
+			}
+		}
+		// swap pour mettre le pivot à sa place v[i]<->v[b]
+		v[b] = v[i];
+		v[i] = pivot;
+
+		return i;
+	}
+
 	public static void main(String[] args) {
 		int[] v = new int[100];
 		for (int i = 0; i < v.length; i++)
 			v[i] = 100 - i;
 
 		long t0 = System.nanoTime();
-		//triInsertion(v);
-		//triBulles(v);
+		// triInsertion(v);
+		// triBulles(v);
 		Arrays.sort(v);
 		long t1 = System.nanoTime();
 		System.out.println("Durée ms: " + (t1 - t0) / 1000000.0);

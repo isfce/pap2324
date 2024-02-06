@@ -132,6 +132,49 @@ public class TestMyVect {
 		assertArrayEquals(v2t, v2);
 		// MyVect.triBulles(v1t);
 		// assertTrue(MyVect.estTrieV1(v1t));
+	}
 
+	@Test
+	void testPivot() {
+		int[] v1 = { 5, 4, 1, 2, 3 };
+		int p = MyVect.posPivot(v1, 0, 4);
+		assertEquals(2, p);
+		assertTrue(estPlusPetit(v1, p));
+		assertTrue(estPlusGrandEgal(v1, p));
+
+		int[] v2 = { 2, 4 };
+		p = MyVect.posPivot(v2, 0, 1);
+		assertEquals(1, p);
+		assertTrue(estPlusPetit(v2, p));
+		assertTrue(estPlusGrandEgal(v2, p));
+
+		int[] v3 = { 4, 2 };
+		p = MyVect.posPivot(v3, 0, 1);
+		assertEquals(0, p);
+		assertTrue(estPlusPetit(v3, p));
+		assertTrue(estPlusGrandEgal(v3, p));
+
+	}
+
+	// test Pivot1
+	public static boolean estPlusPetit(int[] v, int p) {
+		boolean ok = true;
+		int i = p - 1;
+		while (ok && i >= 0) {
+			ok = v[i] < v[p];
+			i--;
+		}
+		return ok;
+	}
+
+	// test Pivot2
+	public static boolean estPlusGrandEgal(int[] v, int p) {
+		boolean ok = true;
+		int i = p + 1;
+		while (ok && i < v.length) {
+			ok = v[i] >= v[p];
+			i++;
+		}
+		return ok;
 	}
 }
