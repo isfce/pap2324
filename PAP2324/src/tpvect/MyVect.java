@@ -2,6 +2,9 @@ package tpvect;
 
 import java.util.Arrays;
 
+import util.IStack;
+import util.StackArray;
+
 public class MyVect {
 	/**
 	 * Affiche un vecteur [1,2]
@@ -183,6 +186,25 @@ public class MyVect {
 	}
 
 	/**
+	 * Permet de trier le vecteur dans un intervalle 
+	 * @param v
+	 * @param a
+	 * @param b
+	 */
+	public static void triInsertion(int[] v, int a, int b) {
+		for (int i = a + 1; i <= b; i++) {
+			int tmp = v[i];
+			int j = i - 1;
+			// cherche la position d'insertion
+			while (j >= 0 && v[j] > tmp) {
+				v[j + 1] = v[j]; // décale les éléments plus grands
+				j--;
+			}
+			v[j + 1] = tmp;// insère tmp à sa bonne place
+		}
+	}
+
+	/**
 	 * Tri Bulles
 	 * 
 	 * @param v
@@ -236,16 +258,34 @@ public class MyVect {
 		return i;
 	}
 
-	public static void main(String[] args) {
-		int[] v = new int[100];
-		for (int i = 0; i < v.length; i++)
-			v[i] = 100 - i;
+	/**
+	 * 
+	 */
+	private record Borne(int a, int b) {
+	};
 
+	/**
+	 * Tri quicksort
+	 * @param v
+	 */
+	public static void quickSort(int[] v) {
+	}
+
+	public static void main(String[] args) {
+		int[] v = new int[100000];
+		for (int i = 0; i < v.length; i++)
+			v[i] = (int) (Math.random() * v.length);
+		afficheV(v);
 		long t0 = System.nanoTime();
-		// triInsertion(v);
+		// quickSort(v);
+		triInsertion(v);
 		// triBulles(v);
-		Arrays.sort(v);
+		// Arrays.sort(v);
 		long t1 = System.nanoTime();
 		System.out.println("Durée ms: " + (t1 - t0) / 1000000.0);
+		// afficheV(v);
 	}
+}
+
+record elem(int a, int b) {
 }
