@@ -1,9 +1,11 @@
 package tpvect;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 import util.IStack;
 import util.StackArray;
+import util.StackListe;
 
 public class MyVect {
 	/**
@@ -269,6 +271,30 @@ public class MyVect {
 	 * @param v
 	 */
 	public static void quickSort(int[] v) {
+		if (v.length < 200) {
+			triInsertion(v);
+			return;
+		}
+		Borne borne;
+		int p;
+		int max = (int) ((Math.log(v.length) / Math.log(2)) * 2);
+		IStack<Borne> s = new StackArray<>(max);
+		s.push(new Borne(0, v.length - 1));
+		do {
+			borne = s.pop();
+			p = posPivot(v, borne.a, borne.b);
+			if (p - borne.a > 1)
+				if (p - borne.a > 10)
+					s.push(new Borne(borne.a, p - 1));
+				else
+					triInsertion(v, borne.a, p - 1);
+			if (borne.b - p > 1)
+				if (borne.b - p > 10)
+					s.push(new Borne(p + 1, borne.b));
+				else
+					triInsertion(v, p + 1, borne.b);
+		} while (!s.empty());
+		s = null;
 	}
 
 	public static void main(String[] args) {
@@ -277,10 +303,10 @@ public class MyVect {
 			v[i] = (int) (Math.random() * v.length);
 		afficheV(v);
 		long t0 = System.nanoTime();
-		// quickSort(v);
-		triInsertion(v);
+		quickSort(v);
+		// triInsertion(v);
 		// triBulles(v);
-		// Arrays.sort(v);
+		Arrays.sort(v);
 		long t1 = System.nanoTime();
 		System.out.println("Durée ms: " + (t1 - t0) / 1000000.0);
 		// afficheV(v);
