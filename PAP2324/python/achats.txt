@@ -1,0 +1,9 @@
+Prénom;Nom;Montant
+Alain;Chabat;12.70
+Lola;Cool;175.25
+Didier;VO;679.99
+Alain;Chabat;47.30
+Lola;Cool;25.25
+
+
+ 
