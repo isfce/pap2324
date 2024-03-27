@@ -177,4 +177,58 @@ public class TestMyVect {
 		}
 		return ok;
 	}
+
+	// test Rotation
+	@Test
+	void testRotationVR() {
+		int[] v0 = { 1, 2, 3 };
+		int[] v01 = { 3, 1, 2 };
+		int[] v02 = { 2, 3, 1 };
+
+		int[] v1 = { 1, 2, 3, 4 };
+		int[] v11 = { 4, 1, 2, 3 };
+		int[] v12 = { 3, 4, 1, 2 };
+		int[] v13 = { 2, 3, 4, 1 };
+
+		int[] v2 = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		int[] v23 = { 7, 8, 9, 1, 2, 3, 4, 5, 6 };
+		int[] v24 = { 6, 7, 8, 9, 1, 2, 3, 4, 5 };
+		int[] v25 = { 5, 6, 7, 8, 9, 1, 2, 3, 4 };
+		int[] vc = v0.clone();
+		MyVect.rotationVR(vc, 1);
+		assertArrayEquals(v01, vc);
+		vc = v0.clone();
+		MyVect.rotationVR(vc, 2);
+		assertArrayEquals(v02, vc);
+
+		vc = v1.clone();
+		MyVect.rotationVR(vc, 1);
+		assertArrayEquals(v11, vc);
+		vc = v1.clone();
+		MyVect.rotationVR(vc, 2);
+		assertArrayEquals(v12, vc);
+		vc = v1.clone();
+		MyVect.rotationVR(vc, 3);
+		assertArrayEquals(v13, vc);
+
+		vc = v2.clone();
+		MyVect.rotationVR(vc, 3);
+		assertArrayEquals(v23, vc);
+		vc = v2.clone();
+		MyVect.rotationVR(vc, 4);
+		assertArrayEquals(v24, vc);
+		vc = v2.clone();
+		MyVect.rotationVR(vc, 5);
+		assertArrayEquals(v25, vc);
+
+		// test négatif
+		vc = v2.clone();
+		MyVect.rotationVR(vc, 3 - vc.length * 8);
+		assertArrayEquals(v23, vc);
+
+		vc = v2.clone();
+		MyVect.rotationVR(vc, 4 - vc.length * 8);
+		assertArrayEquals(v24, vc);
+	}
+
 }

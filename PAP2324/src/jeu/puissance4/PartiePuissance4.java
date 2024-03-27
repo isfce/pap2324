@@ -21,12 +21,12 @@ public class PartiePuissance4 {
 	private final static int[] colonnesInit = { 0, 6, 6, 6, 6, 6, 6, 6 };// 0 inutilisé
 
 	// Etat de la partie
-	private Etat etat = Etat.INIT;
+	private Etat etat = Etat.END;
 	// matrice de la partie
 	private int[][] jeu;
 
 	// indique si c'est le trour du joueur A
-	private boolean tourDesJaunes = true;
+	private boolean tourDesJaunes;
 	// vecteur colonne pour faciliter l'insertion d'un pion
 	private int[] colonnes;
 
@@ -80,7 +80,6 @@ public class PartiePuissance4 {
 	public void initPartie() {
 		etat = Etat.INIT;
 		jeu = initPartie.clone();
-		afficheJeu();
 		colonnes = colonnesInit.clone();
 		// initialise le scanner
 		scan = new Scanner(System.in);
@@ -136,18 +135,18 @@ public class PartiePuissance4 {
 			}
 
 			// si abandon, si gagné ou si plus de pion
-			finPartie = abandon || gagne || (42 - nbPionsSurJeu) == 0;
+			finPartie = abandon || gagne || nbPionsSurJeu == 42;
 		}
 		System.out.println("FIN PARTIE:");
 		afficheJeu();
 		// Affiche le résultat de la partie
 		String resultat;
 		if (abandon)
-			resultat = "Le joueur " + couleurJoueur + " a abandonné";
+			resultat = "Le joueur avec les pions " + couleurJoueur + " a abandonné";
 		else if (!gagne)
 			resultat = "Partie nulle";
 		else
-			resultat = "Le joueur " + couleurJoueur + " a gagné!";
+			resultat = "Le joueur avec les pions " + couleurJoueur + " a gagné!";
 
 		System.out.println(resultat);
 

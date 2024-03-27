@@ -1,11 +1,9 @@
 package tpvect;
 
 import java.util.Arrays;
-import java.util.Stack;
 
 import util.IStack;
 import util.StackArray;
-import util.StackListe;
 
 public class MyVect {
 	/**
@@ -297,6 +295,36 @@ public class MyVect {
 		s = null;
 	}
 
+	/**
+	 * Correction  Rotation de R positions version VO
+	 * @param v un vecteur de taille >0
+	 * @param r un entier positif ou négatif
+	 */
+	public static void rotationVR(int[] v, int r) {
+		int n = v.length;
+		r = r % n;// ajuste r pour que r soit tel que: -n<r<n
+		r = (n + r) % n; // assure r soit positif
+		if (r != 0) {// si on doit fair des décalages
+			int act = 0, prec = 0;// indice de parcours pour la boucle
+			int tmp;
+			int nbElemBoucle = n % r == 0 ? n / r : n;
+			int nbBoucles = n % r == 0 ? r : 1;
+			for (int i = 0; i < nbBoucles; i++) {
+				tmp = v[act];// libère une case qu'on mémorise ds tmp
+				// on fait une boucle jsq avant dernier
+				for (int j = 1; j < nbElemBoucle; j++) {
+					// indice du précédent
+					prec = (n + act - r) % n;
+					v[act] = v[prec];
+					act = prec;
+				}
+				// on est sur la dernière case de la boucle
+				v[act] = tmp; // recopie le tampon
+				act--;// se positionne pour la boucle suivante
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		int[] v = new int[100000];
 		for (int i = 0; i < v.length; i++)
@@ -311,7 +339,4 @@ public class MyVect {
 		System.out.println("Durée ms: " + (t1 - t0) / 1000000.0);
 		// afficheV(v);
 	}
-}
-
-record elem(int a, int b) {
 }
